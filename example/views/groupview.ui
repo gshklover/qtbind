@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This is custom Qt designer .ui format.
+  It differs from standard by introducing <binding> tags instead of property values.
+  Requires custom loader provided by qtbind package. Not loadable into Qt designer.
+-->
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>653</width>
+    <height>528</height>
+   </rect>
+  </property>
+
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+
+  <layout class="QGridLayout" name="gridLayout">
+
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>People</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QListWidget" name="listWidget"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <item row="0" column="1" rowspan="2" alignment="Qt::AlignTop">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Details</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="PersonView" name="_details" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title"><binding path="name" mode="READ"/></property>
+     <layout class="QGridLayout">
+      <item row="0" column="0">
+       <widget class="PersonView" name="_leader" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+
+ <customwidgets>
+  <customwidget>
+   <class>PersonView</class>
+   <extends>QWidget</extends>
+   <header>views.personview</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+
+ <connections/>
+</ui>
