@@ -21,13 +21,12 @@ class View:
         self._update_bindings()
         self._on_context_changed(old, val)
 
-    def bind(self, prop_name, wdg, wdg_prop, flags=(BIND_READ|BIND_WRITE)):
+    def bind(self, prop_name, wdg, wdg_prop, flags=(BIND_READ | BIND_WRITE)):
         """
         Bind context property to widget property
         :param prop_name: context property
-        :param wdg: 
-        :param wdg_prop: 
-        :return: 
+        :param wdg: QWidget
+        :param wdg_prop: property name
         """
         binding = Binding(source=self._context, source_prop=prop_name,
                           target=wdg, target_prop=wdg_prop, flags=flags)
@@ -40,8 +39,7 @@ class View:
     def _on_context_changed(self, old, new):
         """
         Called after context is changed
-        :param old: old context value 
+        :param old: old context value
         :param new: new context value
-        :return: 
         """
         pass

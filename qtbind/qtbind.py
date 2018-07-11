@@ -7,7 +7,7 @@ class SimpleLock:
     Simple context lock.
     Usage example:
         with self._lock:
-            ...    
+            ...
 
         if self._lock:
             continue
@@ -29,7 +29,7 @@ class SimpleLock:
 
 class Binding:
     """
-    Binds changes to source property with 
+    Binds changes to source property with target widget property.
     """
     def __init__(self,
                  source, source_prop,
@@ -38,13 +38,13 @@ class Binding:
                  source_to_target=None, target_to_source=None):
         """
         Create a new binding
-        :param source: 
-        :param source_prop: 
-        :param target: 
-        :param target_prop: 
-        :param flags: 
-        :param source_to_target: 
-        :param target_to_source: 
+        :param source: source object
+        :param source_prop: source property name
+        :param target: target widget
+        :param target_prop: target property name
+        :param flags: combination of BIND_READ/BIND_WRITE
+        :param source_to_target: a value converter callback source -> target
+        :param target_to_source: a value converter callback target -> source
         """
         self._source = None
         self._source_prop = source_prop
@@ -153,7 +153,7 @@ class Binding:
 
     def _sync(self):
         """
-        Synchronize source and target values 
+        Synchronize source and target values
         """
         if self._source is None or self._target is None:
             return

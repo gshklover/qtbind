@@ -6,7 +6,7 @@ from qtbind.interfaces import IPropertyChanged, Event
 class ViewModel(IPropertyChanged):
     """
     Base class for ModelView objects.
-    Objects of this type expose data to Views and add additional sorting/filtering/formating capabilities 
+    Objects of this type expose data to Views and add additional sorting/filtering/formatting capabilities
     """
     def __init__(self, model=None):
         super().__init__()
@@ -63,8 +63,8 @@ class ListViewModel(QAbstractListModel, ViewModel, IContainerViewModel):
     """
     def __init__(self, model, init=None, data_delegate=None):
         """
-        Wrap a list of VM objects         
-        :param model: 
+        Wrap a list of VM objects
+        :param model: list
         :param data_delegate: actual implementation responsible for rendering data
                               unfortunately, Qt VM implementation is not really a VM as it doesn't reuse
                               the model for different views. Here, we attempt to do so.
@@ -92,7 +92,7 @@ class ListViewModel(QAbstractListModel, ViewModel, IContainerViewModel):
     def remove(self, obj):
         try:
             index = self._list.index(obj)
-        except:
+        except ValueError:
             return
         self.beginRemoveRows(QModelIndex(), index, index)
         self._list.remove(obj)

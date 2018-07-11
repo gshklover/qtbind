@@ -14,8 +14,6 @@ class PersonItemDelegate(QStyledItemDelegate):
 class GroupView(QWidget, View):
     def __init__(self, context=None, **kwargs):
         super().__init__(**kwargs)
-        #QWidget.__init__(self, **kwargs)
-        #View.__init__(self, context=context)
 
         self._list = QListView()
         self._list.setItemDelegate(PersonItemDelegate())
@@ -38,4 +36,3 @@ class GroupView(QWidget, View):
         if len(sel) != 1:
             return
         self.context.set_current(sel[0].row())
-

@@ -91,9 +91,6 @@ class CustomUILoader(DynamicUILoader):
 
 def load_ui(uifile, baseinstance, package='', resource_suffix="_rc"):
     """
-    Custom .ui file loader that supports <binding> elements for property values.
-    :param uifile: .ui file path 
-    :param wdg: parent object to construct 
-    :param package: 
+    Same arguments as uic.loadUi()
     """
     return CustomUILoader(package).loadUi(uifile, baseinstance, resource_suffix)
