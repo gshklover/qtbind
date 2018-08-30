@@ -14,10 +14,21 @@ class DummyModel(QtCore.QObject):
 
     def __init__(self):
         super().__init__()
+        self._comment = ''
 
     @property
     def name(self):
         return "Example value"
+
+    @property
+    def comment(self):
+        return self._comment
+
+    @comment.setter
+    def comment(self, val):
+        if val != self._comment:
+            self._comment = val
+            self.property_changed.emit('comment', val)
 
 
 class MyWidget(QtWidgets.QWidget, View):

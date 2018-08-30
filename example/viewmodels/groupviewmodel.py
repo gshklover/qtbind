@@ -16,6 +16,9 @@ class PersonViewModel(ViewModel):
 
 
 class GroupViewModel(ViewModel):
+    """
+    Group ViewModel respresents Group view state (including currently displayed person).
+    """
     def __init__(self, group):
         super().__init__(model=group)
         self._current = None

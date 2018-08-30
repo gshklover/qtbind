@@ -1,3 +1,5 @@
+from PyQt5.QtWidgets import QTextEdit
+
 BIND_READ = 1
 BIND_WRITE = 2
 
@@ -128,14 +130,18 @@ class Binding:
         if self._update_lock:
             return
 
-        value = self._target.property(self._target_prop)
         if self._source is not None:
+            value = self._get_target_value()
+            if self._target_to_source is not None:
+                value = self._target_to_source(value)
             setattr(self._source, self._source_prop, value)
 
     def _get_source_value(self):
         return getattr(self._source, self._source_prop)
 
     def _get_target_value(self):
+        if isinstance(self._target, QTextEdit) and self._target_prop == 'text':
+            return self._target.property('plainText')
         return self._target.property(self._target_prop)
 
     def _set_target_value(self, val):
