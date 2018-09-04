@@ -16,7 +16,7 @@ class PersonView(QWidget, View):
         self._name = QLineEdit()
         self._family_name = QLineEdit()
 
-        self.bind("name", self._name, "text")
+        self.bind("name", self._name, "text", target_signal="editingFinished")
         self.bind("family_name", self._family_name, "text")
 
         layout.addWidget(self._name, 0, 1)

@@ -37,6 +37,7 @@ class Binding:
                  source, source_prop,
                  target, target_prop,
                  flags=(BIND_READ | BIND_WRITE),
+                 target_signal=None,
                  source_to_target=None, target_to_source=None):
         """
         Create a new binding
@@ -52,6 +53,7 @@ class Binding:
         self._source_prop = source_prop
         self._target = None
         self._target_prop = target_prop
+        self._target_signal = target_signal
         self._flags = flags
         self._source_to_target = source_to_target
         self._target_to_source = target_to_source
@@ -81,6 +83,15 @@ class Binding:
         self._sync()
 
     @property
+    def target_signal(self):
+        """
+        Name of the target signal to connect to
+        """
+        if self._target_signal is not None:
+            return self._target_signal
+        return self._target_prop + "Changed"
+
+    @property
     def target(self):
         return self._target
 
@@ -89,7 +100,7 @@ class Binding:
         if self._target == val:
             return
 
-        event_name = self._target_prop + "Changed"
+        event_name = self.target_signal
 
         if self._target is not None and self._flags & BIND_WRITE:
             getattr(self._target, event_name).disconnect(self._on_target_changed)

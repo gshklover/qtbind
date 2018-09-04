@@ -21,7 +21,7 @@ class View:
         self._update_bindings()
         self._on_context_changed(old, val)
 
-    def bind(self, prop_name, wdg, wdg_prop, flags=(BIND_READ | BIND_WRITE)):
+    def bind(self, prop_name, wdg, wdg_prop, flags=(BIND_READ | BIND_WRITE), target_signal=None):
         """
         Bind context property to widget property
         :param prop_name: context property
@@ -29,7 +29,8 @@ class View:
         :param wdg_prop: property name
         """
         binding = Binding(source=self._context, source_prop=prop_name,
-                          target=wdg, target_prop=wdg_prop, flags=flags)
+                          target=wdg, target_prop=wdg_prop, flags=flags,
+                          target_signal=target_signal)
         self._bindings.append(binding)
 
     def _update_bindings(self):

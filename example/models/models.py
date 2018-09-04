@@ -1,7 +1,16 @@
 class Person:
     def __init__(self, name="", family_name=""):
-        self.name = name
+        self._name = name
         self.family_name = family_name
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, val):
+        self._name = val
+        print("Person.name = " + str(val))
 
 
 class Group:
